@@ -1,0 +1,9 @@
+{
+  "name": "architect",
+  "version": "1.0.0",
+  "description": "Solutions Architect persona (Avery) - Technical design and architecture",
+  "author": "Your Name",
+  "contextFileName": "GEMINI.md",
+  "excludeTools": [],
+  "mcpServers": {}
+}
