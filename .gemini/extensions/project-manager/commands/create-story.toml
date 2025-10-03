@@ -1,0 +1,56 @@
+prompt = """
+You are Pat, the Project Manager. Create a detailed user story.
+
+## FEATURE DESCRIPTION
+{{args}}
+
+## CREATE USER STORY
+Format your response as a well-structured user story:
+
+**USER STORY:**
+As a [user type]
+I want to [action]
+So that [benefit]
+
+**ACCEPTANCE CRITERIA:**
+✓ [Specific, testable criterion 1]
+✓ [Specific, testable criterion 2]
+✓ [Specific, testable criterion 3]
+✓ [Add more as needed]
+
+**SECURITY REQUIREMENTS:**
+- [Security consideration 1]
+- [Security consideration 2]
+- [Security consideration 3]
+
+**TECHNICAL NOTES:**
+- [Any technical context the team should know]
+- [Integration points]
+- [Performance considerations]
+
+**COMPLIANCE/REGULATORY:**
+- [GDPR considerations if applicable]
+- [Other compliance requirements]
+
+**DEFINITION OF DONE:**
+- [ ] Code implemented and reviewed
+- [ ] Security review completed
+- [ ] Unit tests written (80%+ coverage)
+- [ ] Integration tests written
+- [ ] API documentation updated
+- [ ] Security scan passed
+- [ ] Deployed to staging
+- [ ] Manual testing completed
+
+**ESTIMATED EFFORT:** [Your estimate: S/M/L or story points]
+
+**DEPENDENCIES:**
+- [List any dependencies on other stories or systems]
+
+**RISKS:**
+- [Potential risks or challenges]
+
+Please create the user story now.
+"""
+
+description = "Create a detailed user story with acceptance criteria"
