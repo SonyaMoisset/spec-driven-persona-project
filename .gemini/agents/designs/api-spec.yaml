@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  title: User Registration API
+  version: 1.0.0
+  description: API for user registration and email verification.
+
+paths:
+  /api/v1/users/register:
+    post:
+      summary: Register a new user
+      description: Creates a new user account with a pending verification status and sends a verification email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: user@example.com
+                password:
+                  type: string
+                  format: password
+                  description: "Password must be at least 12 characters long and contain a mix of uppercase, lowercase, numbers, and special characters."
+                  example: "SecureP@ssw0rd123"
+      responses:
+        '201':
+          description: User created successfully. Verification email sent.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User registered successfully. Please check your email to verify your account."
+        '400':
+          description: Bad Request - Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict - User with this email already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+
+  /api/v1/users/verify/{token}:
+    get:
+      summary: Verify a user's email address
+      description: Activates a user account using the verification token sent via email.
+      parameters:
+        - in: path
+          name: token
+          required: true
+          schema:
+            type: string
+          description: The email verification token.
+      responses:
+        '200':
+          description: Email verified successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Email verified successfully. You can now log in."
+        '400':
+          description: Bad Request - Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Invalid input provided"
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example:
+            - field: "email"
+              message: "Email is not valid"
