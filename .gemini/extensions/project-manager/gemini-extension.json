@@ -1,0 +1,9 @@
+{
+  "name": "project-manager",
+  "version": "1.0.0",
+  "description": "Project Manager persona (Pat) - Defines requirements and manages project scope",
+  "author": "Your Name",
+  "contextFileName": "GEMINI.md",
+  "excludeTools": [],
+  "mcpServers": {}
+}
